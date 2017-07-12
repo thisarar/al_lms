@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LibraryDBContext.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="LibraryDBContextStoreContainer">
+          <EntitySet Name="Book" EntityType="LibraryDBContext.Store.Book" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BorrowedBy" EntityType="LibraryDBContext.Store.BorrowedBy" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Category" EntityType="LibraryDBContext.Store.Category" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User" EntityType="LibraryDBContext.Store.User" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Book_Category" Association="LibraryDBContext.Store.FK_Book_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BorrowedBy_Book" Association="LibraryDBContext.Store.FK_BorrowedBy_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="BorrowedBy" EntitySet="BorrowedBy" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="BookId" />
+          </Key>
+          <Property Name="BookId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BookName" Type="varchar" MaxLength="50" />
+          <Property Name="AuthorName" Type="varchar" MaxLength="50" />
+          <Property Name="PublisherName" Type="varchar" MaxLength="50" />
+          <Property Name="PublishedDate" Type="date" />
+          <Property Name="price" Type="money" />
+          <Property Name="PurchasedDate" Type="date" />
+          <Property Name="PurchasedBillNo" Type="varchar" MaxLength="50" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="NoOfCopies" Type="int" />
+          <Property Name="FinePerDay" Type="money" />
+          <Property Name="BookImage" Type="varchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="BorrowedBy">
+          <Key>
+            <PropertyRef Name="BorrowedId" />
+          </Key>
+          <Property Name="BorrowedId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="int" Nullable="false" />
+          <Property Name="BookId" Type="int" Nullable="false" />
+          <Property Name="BorrowedDate" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ReturnDate" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="CurrentFine" Type="money" Nullable="false" />
+          <Property Name="returned" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="password" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="FullName" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="email" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Book_Category">
+          <End Role="Category" Type="LibraryDBContext.Store.Category" Multiplicity="1" />
+          <End Role="Book" Type="LibraryDBContext.Store.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BorrowedBy_Book">
+          <End Role="Book" Type="LibraryDBContext.Store.Book" Multiplicity="1" />
+          <End Role="BorrowedBy" Type="LibraryDBContext.Store.BorrowedBy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="BookId" />
+            </Principal>
+            <Dependent Role="BorrowedBy">
+              <PropertyRef Name="BookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LibraryDBContext" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="library_dbEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Books" EntityType="LibraryDBContext.Book" />
+          <EntitySet Name="BorrowedBies" EntityType="LibraryDBContext.BorrowedBy" />
+          <EntitySet Name="Categories" EntityType="LibraryDBContext.Category" />
+          <EntitySet Name="Users" EntityType="LibraryDBContext.User" />
+          <AssociationSet Name="FK_Book_Category" Association="LibraryDBContext.FK_Book_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BorrowedBy_Book" Association="LibraryDBContext.FK_BorrowedBy_Book">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="BorrowedBy" EntitySet="BorrowedBies" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="BookId" />
+          </Key>
+          <Property Name="BookId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="BookName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="AuthorName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="PublisherName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="PublishedDate" Type="DateTime" Precision="0" />
+          <Property Name="price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PurchasedDate" Type="DateTime" Precision="0" />
+          <Property Name="PurchasedBillNo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="NoOfCopies" Type="Int32" />
+          <Property Name="FinePerDay" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BookImage" Type="String" MaxLength="2000" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Category" Relationship="LibraryDBContext.FK_Book_Category" FromRole="Book" ToRole="Category" />
+          <NavigationProperty Name="BorrowedBies" Relationship="LibraryDBContext.FK_BorrowedBy_Book" FromRole="Book" ToRole="BorrowedBy" />
+        </EntityType>
+        <EntityType Name="BorrowedBy">
+          <Key>
+            <PropertyRef Name="BorrowedId" />
+          </Key>
+          <Property Name="BorrowedId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="Int32" Nullable="false" />
+          <Property Name="BookId" Type="Int32" Nullable="false" />
+          <Property Name="BorrowedDate" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ReturnDate" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CurrentFine" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="returned" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Book" Relationship="LibraryDBContext.FK_BorrowedBy_Book" FromRole="BorrowedBy" ToRole="Book" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Books" Relationship="LibraryDBContext.FK_Book_Category" FromRole="Category" ToRole="Book" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Book_Category">
+          <End Role="Category" Type="LibraryDBContext.Category" Multiplicity="1" />
+          <End Role="Book" Type="LibraryDBContext.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BorrowedBy_Book">
+          <End Role="Book" Type="LibraryDBContext.Book" Multiplicity="1" />
+          <End Role="BorrowedBy" Type="LibraryDBContext.BorrowedBy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="BookId" />
+            </Principal>
+            <Dependent Role="BorrowedBy">
+              <PropertyRef Name="BookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LibraryDBContextStoreContainer" CdmEntityContainer="library_dbEntities">
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="LibraryDBContext.Book">
+              <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+                <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+                <ScalarProperty Name="PublisherName" ColumnName="PublisherName" />
+                <ScalarProperty Name="PublishedDate" ColumnName="PublishedDate" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="PurchasedDate" ColumnName="PurchasedDate" />
+                <ScalarProperty Name="PurchasedBillNo" ColumnName="PurchasedBillNo" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="NoOfCopies" ColumnName="NoOfCopies" />
+                <ScalarProperty Name="FinePerDay" ColumnName="FinePerDay" />
+                <ScalarProperty Name="BookImage" ColumnName="BookImage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BorrowedBies">
+            <EntityTypeMapping TypeName="LibraryDBContext.BorrowedBy">
+              <MappingFragment StoreEntitySet="BorrowedBy">
+                <ScalarProperty Name="BorrowedId" ColumnName="BorrowedId" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="BorrowedDate" ColumnName="BorrowedDate" />
+                <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+                <ScalarProperty Name="CurrentFine" ColumnName="CurrentFine" />
+                <ScalarProperty Name="returned" ColumnName="returned" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="LibraryDBContext.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="LibraryDBContext.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

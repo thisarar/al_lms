@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="library_dbModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="LibraryModel" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Books" EntityType="library_dbModel.Book" />
+    <EntitySet Name="Categories" EntityType="library_dbModel.Category" />
+    <EntitySet Name="Users" EntityType="library_dbModel.User" />
+    <AssociationSet Name="FK_Book_Category" Association="library_dbModel.FK_Book_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Book" EntitySet="Books" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Book">
+    <Key>
+      <PropertyRef Name="BookId" />
+    </Key>
+    <Property Name="BookId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="BookName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="AuthorName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="PublisherName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="PublishedDate" Type="DateTime" Precision="0" />
+    <Property Name="price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="PurchasedDate" Type="DateTime" Precision="0" />
+    <Property Name="PurchasedBillNo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="NoOfCopies" Type="Int32" />
+    <Property Name="FinePerDay" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="BookImage" Type="String" MaxLength="2000" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Category" Relationship="library_dbModel.FK_Book_Category" FromRole="Book" ToRole="Category" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Books" Relationship="library_dbModel.FK_Book_Category" FromRole="Category" ToRole="Book" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="FullName" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Book_Category">
+    <End Role="Category" Type="library_dbModel.Category" Multiplicity="1" />
+    <End Role="Book" Type="library_dbModel.Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

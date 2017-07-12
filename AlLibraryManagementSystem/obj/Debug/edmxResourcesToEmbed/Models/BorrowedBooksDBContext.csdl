@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="borrowed_dbModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="BorrowedBooksDBContext" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="BorrowedBies" EntityType="borrowed_dbModel.BorrowedBy" />
+  </EntityContainer>
+  <EntityType Name="BorrowedBy">
+    <Key>
+      <PropertyRef Name="BorrowedId" />
+    </Key>
+    <Property Name="BorrowedId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="MemberId" Type="Int32" Nullable="false" />
+    <Property Name="BookId" Type="Int32" Nullable="false" />
+    <Property Name="BorrowedDate" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ReturnDate" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CurrentFine" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="returned" Type="Byte" Nullable="false" />
+  </EntityType>
+</Schema>

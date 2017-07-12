@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="members_dbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="members_dbModelStoreContainer">
+    <EntitySet Name="Member" EntityType="members_dbModel.Store.Member" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="MemberId" />
+    </Key>
+    <Property Name="MemberId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="varchar" MaxLength="150" />
+    <Property Name="address" Type="varchar" MaxLength="50" />
+    <Property Name="BooksPerBorrow" Type="varchar" MaxLength="50" />
+    <Property Name="phone" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="RegisteredDate" Type="date" />
+    <Property Name="ExpirationDate" Type="date" />
+  </EntityType>
+</Schema>

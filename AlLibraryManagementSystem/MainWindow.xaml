@@ -1,0 +1,21 @@
+﻿<Window x:Class="AlLibraryManagementSystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SignIn - AL Library" Height="721.059" Width="580.018"
+        ResizeMode="CanMinimize" HorizontalAlignment="Center" VerticalAlignment="Center" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Canvas HorizontalAlignment="Center" Height="378" Margin="43,199,53,115" VerticalAlignment="Center" Width="478" Background="#FFECEFF1">
+            <TextBox x:Name="TxtUsername" Height="34" Canvas.Left="43" TextWrapping="Wrap" Canvas.Top="92" Width="400" BorderThickness="0.5" HorizontalAlignment="Center" FontFamily="Segoe UI Light" FontSize="16"/>
+            <PasswordBox x:Name="TxtPassword" Canvas.Left="43" Canvas.Top="166" Width="400" Height="34" BorderThickness="0.5"  HorizontalAlignment="Center" FontFamily="Segoe UI Light" FontSize="16"/>
+            <Label Content="USERNAME&#xD;&#xA;" Canvas.Left="43" Canvas.Top="59" HorizontalAlignment="Center" Height="28" Foreground="#FF383434" FontFamily="Segoe UI Light" FontSize="16" Width="89"/>
+            <Label Content="PASSWORD&#xA;" Canvas.Left="43" Canvas.Top="138" HorizontalAlignment="Center" Height="28" Foreground="#FF383434" FontFamily="Segoe UI Light" FontSize="16"/>
+            <Button Style="{StaticResource NoGlareButton}" x:Name="BtnSignIn" Content="Sign In" Canvas.Left="43" Canvas.Top="233" Width="400" RenderTransformOrigin="-0.093,-0.55" Height="34" FontFamily="Segoe UI Light" FontSize="16" Background="#FF039BE5" Foreground="White" BorderThickness="0" Click="BtnSignIn_Click"/>
+            <Button Style="{StaticResource NoGlareButton}" x:Name="BtnExit" Content="Exit" Canvas.Left="43" Canvas.Top="282" Width="400" RenderTransformOrigin="-0.093,-0.55" Height="34" FontFamily="Segoe UI Light" FontSize="16" Background="#FFF44336" Foreground="White" BorderThickness="0"/>
+            <Label Content="SIGN IN" VerticalAlignment="Bottom" Width="140" FontFamily="Segoe UI Semibold" FontSize="22" Canvas.Left="168" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Foreground="#FF424242" Canvas.Top="15"/>
+        </Canvas>
+        <Grid HorizontalAlignment="Center" Height="130" Margin="0,38,0,0" VerticalAlignment="Top" Width="574">
+            <Image Source="./Assets/logo.png" HorizontalAlignment="Center"  Margin="83,1,111,2"/>
+        </Grid>
+    </Grid>
+    
+</Window>

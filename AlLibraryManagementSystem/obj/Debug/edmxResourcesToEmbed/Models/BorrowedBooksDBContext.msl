@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="borrowed_dbModelStoreContainer" CdmEntityContainer="BorrowedBooksDBContext">
+    <EntitySetMapping Name="BorrowedBies">
+      <EntityTypeMapping TypeName="borrowed_dbModel.BorrowedBy">
+        <MappingFragment StoreEntitySet="BorrowedBy">
+          <ScalarProperty Name="BorrowedId" ColumnName="BorrowedId" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="BookId" ColumnName="BookId" />
+          <ScalarProperty Name="BorrowedDate" ColumnName="BorrowedDate" />
+          <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+          <ScalarProperty Name="CurrentFine" ColumnName="CurrentFine" />
+          <ScalarProperty Name="returned" ColumnName="returned" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

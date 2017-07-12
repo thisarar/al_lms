@@ -1,0 +1,42 @@
+﻿<Window x:Class="AlLibraryManagementSystem.Forms.Home"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Home" Height="797.851" Width="1304.149"
+        ResizeMode="CanMinimize" HorizontalAlignment="Center" WindowState="Maximized" VerticalAlignment="Center" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Image HorizontalAlignment="Left" Height="168" Margin="0,10,0,0" VerticalAlignment="Top" Width="1298" Source="/AlLibraryManagementSystem;component/Assets/logo.png" StretchDirection="UpOnly"/>
+        <ListBox HorizontalAlignment="Left" Height="426" VerticalAlignment="Top" Width="1036" Background="#FF263238" Margin="142,176,0,0" BorderBrush="{x:Null}" SelectionChanged="ListBox_SelectionChanged_1">
+
+            <Button Style="{StaticResource NoGlareButton}" Height="74" Width="1012" FontFamily="Segoe UI Light" FontSize="18" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" HorizontalContentAlignment="Left" Click="Button_Click_4">
+                <StackPanel>
+                    <Image Source="../Assets/return.png" Height="23" Width="259" RenderTransformOrigin="0.467,0.478" IsEnabled="False"/>
+                    <TextBlock Width="264" HorizontalAlignment="Left" TextAlignment="Center" Text="Return Book" IsEnabled="False"/>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource NoGlareButton}" Height="74" Width="1012" FontFamily="Segoe UI Light" FontSize="18" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" HorizontalContentAlignment="Left" Click="Button_Click_6">
+                <StackPanel>
+                    <Image Source="../Assets/issue.png" Height="23" Width="259" RenderTransformOrigin="0.467,0.478" IsEnabled="False"/>
+                    <TextBlock Width="264" HorizontalAlignment="Left" TextAlignment="Center" Text="Issue Book" IsEnabled="False"/>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource NoGlareButton}" Height="74" Width="1012" FontFamily="Segoe UI Light" FontSize="18" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" HorizontalContentAlignment="Left" Click="Button_Click_3">
+                <StackPanel>
+                    <Image Source="../Assets/member.png" Height="23" Width="259" RenderTransformOrigin="0.467,0.478" IsEnabled="False"/>
+                    <TextBlock Width="264" HorizontalAlignment="Left" TextAlignment="Center" Text="Members" IsEnabled="False"/>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource NoGlareButton}" Height="74" Width="1012" FontFamily="Segoe UI Light" FontSize="18" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" HorizontalContentAlignment="Left" Click="Button_Click_2">
+                <StackPanel>
+                    <Image Source="../Assets/book.png" Height="23" Width="260" RenderTransformOrigin="0.467,0.478" IsEnabled="False"/>
+                    <TextBlock Width="264" HorizontalAlignment="Left" TextAlignment="Center" Text="Books" IsEnabled="False"/>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource NoGlareButton}" Height="74" Width="1014" FontFamily="Segoe UI Light" FontSize="18" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" HorizontalContentAlignment="Left" Click="Button_Click_5">
+                <StackPanel>
+                    <Image Source="../Assets/fine.png" Height="23" Width="259" RenderTransformOrigin="0.467,0.478" IsEnabled="False"/>
+                    <TextBlock Width="264" HorizontalAlignment="Left" TextAlignment="Center" Text="Fines" IsEnabled="False"/>
+                </StackPanel>
+            </Button>
+        </ListBox>
+    </Grid>
+</Window>

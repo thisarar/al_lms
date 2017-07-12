@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="borrowed_dbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="borrowed_dbModelStoreContainer">
+    <EntitySet Name="BorrowedBy" EntityType="borrowed_dbModel.Store.BorrowedBy" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="BorrowedBy">
+    <Key>
+      <PropertyRef Name="BorrowedId" />
+    </Key>
+    <Property Name="BorrowedId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="MemberId" Type="int" Nullable="false" />
+    <Property Name="BookId" Type="int" Nullable="false" />
+    <Property Name="BorrowedDate" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ReturnDate" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="CurrentFine" Type="money" Nullable="false" />
+    <Property Name="returned" Type="tinyint" Nullable="false" />
+  </EntityType>
+</Schema>
